@@ -1,0 +1,14 @@
+---
+- name: Add the user sysadmin on all nodes
+  hosts: all
+  become: true
+  become_user: root
+  vars:
+    sysadmin_password: redhat
+  tasks:
+  - name : Creating user ...
+    user:
+      name: sysadmin
+      comment: Muhammad ALi
+      password: "{{ sysadmin_password | password_hash('sha512')}}"
+      state: present 
