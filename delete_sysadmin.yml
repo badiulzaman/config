@@ -3,12 +3,8 @@
   hosts: all
   become: true
   become_user: root
-  vars:
-    sysadmin_password: redhat
   tasks:
   - name : Deleting user ...
     user:
-      name: sysadmin
-      comment: Muhammad ALi
-      password: "{{ sysadmin_password | password_hash('sha512', 'mysecretsalt') }}"
+      name: sysadmin1
       state: absent
